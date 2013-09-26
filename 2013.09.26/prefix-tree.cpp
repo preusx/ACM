@@ -33,7 +33,7 @@ Node * put(Node *head, string value) {
 
 	_for(i, 0, size) {
 		// cout << value[i];
-		node = node->children[value[i]];
+		node = head->children[value[i]];
 
 		if(!node) {
 			Node *buf = NULL;
@@ -47,23 +47,41 @@ Node * put(Node *head, string value) {
 		} else {
 			node->prefix++;
 		}
+		
+		head->children[value[i]] = node;
+		head = node;
 	}
 }
 
-Node * get(Node *head, string value) {}
+Node * get(Node *head, string value) {
+	DT size = value.length();
+	Node *node = head;
+
+	_for(i, 0, size) {
+		node = node->children[value[i]];
+		cout << value[i] << endl;
+
+		if(!node) {
+			return 0;
+		}
+	}
+
+	return node;
+}
 // Node () {}
 
 int main() {
-	string a;
+	string a, b;
 	Node *root = NULL;
 	root = init(root);
 
 	cin >> a;
+	cin >> b;
+	put(root, a);
+	Node *result = get(root, b);
 
-	Node *result = put(root, a);
-
-	cout << result->key << endl;
-	cout << root->children[a[1]]->key << endl;
+	if(result)
+		cout << result->key << endl;
 
 	return 0;
 }
