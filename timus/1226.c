@@ -5,7 +5,7 @@
 
 int main() {
 	int length = 0, i;
-	char buf, word[255];
+	char buf, word[256];
 
 	// freopen("input.txt", "r", stdin);
 
@@ -23,6 +23,12 @@ int main() {
 			}
 			printf("%c", buf);
 		}
+	}
+	if(length>0) {
+		for(i = length-1; i >= 0; i--) {
+			printf("%c", word[i]);
+		}
+		length = 0;
 	}
 
 	// fclose(stdin);
