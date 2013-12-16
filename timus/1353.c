@@ -35,21 +35,21 @@ int main() {
         }
     }
 
-    // for(i = 1; i <= 9; i++) {
-    //     for(j = 1; j <= s; j++) {
-    //         printf("%6d ", a[i][j]);
-    //     }
-    //     printf("\n");
-    // }
+    for(i = 1; i <= 9; i++) {
+        for(j = 1; j <= s; j++) {
+            printf("%6d ", a[i][j]);
+        }
+        printf("\n");
+    }
 
     // for(i = 0; i <= s; i++) {
     //     printf("%lld\n", s < 9 ? a[9][i] : (long long)(a[9][i] - (long long)(a[9][i-10] * 9)));
     //     printf("\t%lld %lld\n", a[9][i], a[9][i-10] * 9);
     // }
 
-    k =  a[9][s];
+    k = a[9][s];
     if(s >= 9) {
-        k -= a[9][s-10] * 9;
+        k += a[9][s-10] * 9 * (s/10%2 ? -1 : 1);
 
         // if(s >= 18) {
         //     k += a[9][s-18] + 1;
